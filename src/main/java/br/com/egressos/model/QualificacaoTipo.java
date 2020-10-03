@@ -22,6 +22,8 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  *
  * @author Porto
@@ -44,7 +46,8 @@ public class QualificacaoTipo implements Serializable {
     @Size(max = 45)
     @Column(name = "descricao")
     private String descricao;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "qualificacaoTipoid")
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "qualificacaoTipo")
     private Collection<Qualificacao> qualificacaoCollection;
 
     public QualificacaoTipo() {

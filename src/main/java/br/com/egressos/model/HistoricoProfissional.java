@@ -56,7 +56,7 @@ public class HistoricoProfissional implements Serializable {
     private String dataTermino;
     @JoinColumn(name = "Egresso_cpf", referencedColumnName = "cpf")
     @ManyToOne(optional = false)
-    private Egresso egressocpf;
+    private Egresso egresso;
 
     public HistoricoProfissional() {
     }
@@ -105,12 +105,12 @@ public class HistoricoProfissional implements Serializable {
         this.dataTermino = dataTermino;
     }
 
-    public Egresso getEgressocpf() {
-        return egressocpf;
+    public Egresso getEgresso() {
+        return egresso;
     }
 
-    public void setEgressocpf(Egresso egressocpf) {
-        this.egressocpf = egressocpf;
+    public void setEgresso(Egresso egresso) {
+        this.egresso = egresso;
     }
 
     @Override

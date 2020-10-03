@@ -72,10 +72,10 @@ public class Egresso implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "egresso")
     private Collection<EgressoCurso> egressoCursoCollection;
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "egressocpf")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "egresso")
     private Collection<Qualificacao> qualificacaoCollection;
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "egressocpf")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "egresso")
     private Collection<HistoricoProfissional> historicoProfissionalCollection;
     @JoinColumn(name = "Endereco_id", referencedColumnName = "id")
     @ManyToOne(cascade = CascadeType.ALL, optional = false)

@@ -48,10 +48,10 @@ public class Qualificacao implements Serializable {
     private String anoConclusao;
     @JoinColumn(name = "Egresso_cpf", referencedColumnName = "cpf")
     @ManyToOne(optional = false)
-    private Egresso egressocpf;
+    private Egresso egresso;
     @JoinColumn(name = "Qualificacao_Tipo_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private QualificacaoTipo qualificacaoTipoid;
+    private QualificacaoTipo qualificacaoTipo;
 
     public Qualificacao() {
     }
@@ -84,20 +84,20 @@ public class Qualificacao implements Serializable {
         this.anoConclusao = anoConclusao;
     }
 
-    public Egresso getEgressocpf() {
-        return egressocpf;
+    public Egresso getEgresso() {
+        return egresso;
     }
 
-    public void setEgressocpf(Egresso egressocpf) {
-        this.egressocpf = egressocpf;
+    public void setEgresso(Egresso egresso) {
+        this.egresso = egresso;
     }
 
-    public QualificacaoTipo getQualificacaoTipoid() {
-        return qualificacaoTipoid;
+    public QualificacaoTipo getQualificacaoTipo() {
+        return qualificacaoTipo;
     }
 
-    public void setQualificacaoTipoid(QualificacaoTipo qualificacaoTipoid) {
-        this.qualificacaoTipoid = qualificacaoTipoid;
+    public void setQualificacaoTipoid(QualificacaoTipo qualificacaoTipo) {
+        this.qualificacaoTipo = qualificacaoTipo;
     }
 
     @Override
