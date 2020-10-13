@@ -12,7 +12,7 @@ import br.com.egressos.model.QualificacaoTipo;
 public interface QualificacaoRepository extends JpaRepository<Qualificacao, Integer>{
 		  
 		  @Query("SELECT q FROM Qualificacao q WHERE q.egresso.cpf = :cpf")
-		  public Qualificacao getQualificacaoPorCpf(@Param("cpf") String cpf);
+		  public List<Qualificacao> getQualificacaoPorCpf(@Param("cpf") String cpf);
 		  
 		  
 		  @Query("SELECT tq FROM QualificacaoTipo tq")

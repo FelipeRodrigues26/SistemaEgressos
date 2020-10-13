@@ -22,9 +22,15 @@ public class QualificacaoService {
 		return qualificacaoRepository.findAll();
 	}
 	
+	public List<Qualificacao> listarPorIdEgresso(String cpf) {
+		return qualificacaoRepository.getQualificacaoPorCpf(cpf);
+	}
+	
 	public List<QualificacaoTipo> listarTiposQualificacao() {
 		return qualificacaoRepository.getTiposQualificacao();
 	}
+	
+	
 	
 	public Optional<Qualificacao> buscarPeloId(Integer id) {
 		

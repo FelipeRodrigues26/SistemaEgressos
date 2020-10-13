@@ -31,12 +31,21 @@ public class HistoricoProfissionalResource {
 	public ResponseEntity<List<HistoricoProfissional>> listar() {
 		return ResponseEntity.ok().body(historicoProfissionalService.listar());
 	}
-
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<Optional<HistoricoProfissional>> buscarPeloId(@PathVariable Integer id) {
 
 		// se nao encontrar um historico Profissional com o ID passado como parametro, retorna um 404 NOT FOUND
 		Optional<HistoricoProfissional> historicoProfissional = historicoProfissionalService.buscarPeloId(id);
+
+		return ResponseEntity.ok().body(historicoProfissional);
+	}
+	
+	@GetMapping("/buscaPorCPF/{idEgresso}")
+	public ResponseEntity<List<HistoricoProfissional>> buscarPeloIdEgresso(@PathVariable String idEgresso) {
+
+		// se nao encontrar nenhum historico Profissional com o ID Egresso passado como parametro, retorna um 404 NOT FOUND
+		List<HistoricoProfissional> historicoProfissional = historicoProfissionalService.listarPorIdEgresso(idEgresso);
 
 		return ResponseEntity.ok().body(historicoProfissional);
 	}

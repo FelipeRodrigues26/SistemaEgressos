@@ -56,7 +56,7 @@ public class Feedback implements Serializable {
     @Column(name = "data")
     @Temporal(TemporalType.DATE)
     private Date data;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "feedbackid")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "feedback")
     private Collection<Oportunidade> oportunidadeCollection;
     @JoinColumn(name = "Motivo_id", referencedColumnName = "id")
     @ManyToOne(optional = false)

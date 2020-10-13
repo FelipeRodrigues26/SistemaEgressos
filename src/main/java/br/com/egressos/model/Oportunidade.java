@@ -61,10 +61,10 @@ public class Oportunidade implements Serializable {
     private String status;
     @JoinColumn(name = "Empresa_cnpj", referencedColumnName = "cnpj")
     @ManyToOne(optional = false)
-    private Empresa empresacnpj;
+    private Empresa empresa;
     @JoinColumn(name = "Feedback_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Feedback feedbackid;
+    @ManyToOne()
+    private Feedback feedback;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "oportunidade")
     private Collection<Participacao> participacaoCollection;
 
@@ -115,20 +115,20 @@ public class Oportunidade implements Serializable {
         this.status = status;
     }
 
-    public Empresa getEmpresacnpj() {
-        return empresacnpj;
+    public Empresa getEmpresa() {
+        return empresa;
     }
 
-    public void setEmpresacnpj(Empresa empresacnpj) {
-        this.empresacnpj = empresacnpj;
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 
-    public Feedback getFeedbackid() {
-        return feedbackid;
+    public Feedback getFeedback() {
+        return feedback;
     }
 
-    public void setFeedbackid(Feedback feedbackid) {
-        this.feedbackid = feedbackid;
+    public void setFeedback(Feedback feedback) {
+        this.feedback = feedback;
     }
 
     @XmlTransient

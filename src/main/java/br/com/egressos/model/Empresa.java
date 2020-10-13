@@ -17,11 +17,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  *
@@ -56,14 +59,25 @@ public class Empresa implements Serializable {
     @Column(name = "area_atuacao")
     private String areaAtuacao;
     @Size(max = 45)
+    @Column(name = "email")
+    private String email;
+    @Size(max = 15)
+    @Column(name = "fone")
+    private String fone;
+    @Size(max = 45)
     @Column(name = "situacao_cadastral")
     private String situacaoCadastral;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empresacnpj")
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empresa")
     private Collection<Oportunidade> oportunidadeCollection;
     @JoinColumn(name = "Endereco_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade = CascadeType.ALL,optional = false)
     private Endereco endereco;
-
+    
+    @JoinColumn(name = "Usuario_login", referencedColumnName = "login")
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    private Usuario usuario;
+    
     public Empresa() {
     }
 
@@ -102,8 +116,35 @@ public class Empresa implements Serializable {
     public void setAreaAtuacao(String areaAtuacao) {
         this.areaAtuacao = areaAtuacao;
     }
+    
+    
 
-    public String getSituacaoCadastral() {
+    public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+    
+	
+	public String getFone() {
+		return fone;
+	}
+
+	public void setFone(String fone) {
+		this.fone = fone;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getSituacaoCadastral() {
         return situacaoCadastral;
     }
 
@@ -127,7 +168,13 @@ public class Empresa implements Serializable {
     public void setEnderecoid(Endereco enderecoid) {
         this.endereco = enderecoid;
     }
+    public Usuario getUsuario() {
+        return usuario;
+    }
 
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
     @Override
     public int hashCode() {
         int hash = 0;

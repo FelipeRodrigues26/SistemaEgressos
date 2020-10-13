@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.egressos.model.HistoricoProfissional;
 import br.com.egressos.model.Qualificacao;
 import br.com.egressos.model.QualificacaoTipo;
 import br.com.egressos.service.QualificacaoService;
@@ -36,6 +37,7 @@ public class QualificacaoResource {
 	public ResponseEntity<List<QualificacaoTipo>> listarTiposQualificacao() {
 		return ResponseEntity.ok().body(qualificacaoService.listarTiposQualificacao());
 	}
+	
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Optional<Qualificacao>> buscarPeloId(@PathVariable Integer id) {
@@ -46,6 +48,14 @@ public class QualificacaoResource {
 		return ResponseEntity.ok().body(qualificacao);
 	}
 	
+	@GetMapping("/buscaPorCPF/{idEgresso}")
+	public ResponseEntity<List<Qualificacao>> buscarPeloIdEgresso(@PathVariable String idEgresso) {
+
+		// se nao encontrar nenhuma Qualificacao com o ID Egresso passado como parametro, retorna um 404 NOT FOUND
+		List<Qualificacao> qualificacoes = qualificacaoService.listarPorIdEgresso(idEgresso);
+
+		return ResponseEntity.ok().body(qualificacoes);
+	}
 	
 
 

@@ -62,6 +62,9 @@ public class Usuario implements Serializable {
     @JsonIgnore
     @OneToOne( fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "usuario")
     private Coordenador coordenador;
+    @JsonIgnore
+    @OneToOne( fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "usuario")
+    private Empresa empresa;
 
     public Usuario() {
     }
@@ -69,7 +72,7 @@ public class Usuario implements Serializable {
     public Usuario(String login) {
         this.login = login;
     }
-
+    
     public String getLogin() {
         return login;
     }
@@ -121,6 +124,14 @@ public class Usuario implements Serializable {
 
     public Coordenador getCoordenador() {
         return this.coordenador;
+    }
+    
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
+    public Empresa getEmpresa() {
+        return this.empresa;
     }
 
     @Override

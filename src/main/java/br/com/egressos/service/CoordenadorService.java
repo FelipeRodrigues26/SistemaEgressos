@@ -54,7 +54,7 @@ package br.com.egressos.service;
 		
 		public void atualizar(Coordenador coordenador) {
 			
-			/* vericando se o vinho realmente existe, poderia ter
+			/* vericando se o coordenador realmente existe, poderia ter
 			 * chamado o metodo buscarPeloId direto, mas criei o metodo
 			 *  verificar existencia para ajudar na legibilidade do codigo */
 			verificarExistencia(coordenador);

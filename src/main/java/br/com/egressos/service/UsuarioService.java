@@ -39,7 +39,7 @@ package br.com.egressos.service;
 		public Usuario salvar(Usuario usuario) {
 			
 			/* este metodo nao faz atualizacao por isso e preciso garantir que o id sera sempre nulo,
-			 * caso contrario o vinho sera atualizado em vez de criado um novo vinho 
+			 * caso contrario o vinho sera atualizado em vez de criado um novo Usuario 
 			 * */
 			
 			usuario.setLogin(null);
@@ -58,7 +58,7 @@ package br.com.egressos.service;
 		
 		public void atualizar(Usuario usuario) {
 			
-			/* vericando se o vinho realmente existe, poderia ter
+			/* vericando se o Usuario realmente existe, poderia ter
 			 * chamado o metodo buscarPeloId direto, mas criei o metodo
 			 *  verificar existencia para ajudar na legibilidade do codigo */
 			verificarExistencia(usuario);

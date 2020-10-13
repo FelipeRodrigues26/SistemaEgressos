@@ -8,6 +8,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import br.com.egressos.model.HistoricoProfissional;
+import br.com.egressos.model.Qualificacao;
 import br.com.egressos.repository.HistoricoProfissionalRepository;
 import br.com.egressos.service.exceptions.RecursoNaoEncontradoException;
 
@@ -19,6 +20,10 @@ public class HistoricoProfissionalService {
 	
 	public List<HistoricoProfissional> listar() {
 		return historicoProfissionalRepository.findAll();
+	}
+	
+	public List<HistoricoProfissional> listarPorIdEgresso(String cpf) {
+		return historicoProfissionalRepository.getHistoricoPorCpf(cpf);
 	}
 	
 	public Optional<HistoricoProfissional> buscarPeloId(Integer id) {
